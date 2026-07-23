@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
       { title: "Qareeb — Help is Always Near" },
       { name: "description", content: "Qareeb connects you with verified local helpers nearby. Join the waitlist — launching soon." },
       { property: "og:title", content: "Qareeb — Help is Always Near" },
-      { property: "og:description", content: "Verified local helpers, nearby. Join the Qareeb waitlist." },
+      { property: "og:description", content: "Qareeb connects you with verified local helpers nearby. Join the waitlist — launching soon." },
     ],
   }),
 });
