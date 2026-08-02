@@ -273,13 +273,13 @@ function Waitlist() {
         <div className="mt-10">
           <p className="text-sm text-[#6B7280]">Follow us on social media</p>
           <div className="mt-4 flex items-center justify-center gap-3">
-            {[Instagram, Facebook, Linkedin, Youtube].map((Icon, i) => (
-              <a key={i} href="#" aria-label="Social"
+            {SOCIAL_LINKS.map(({ name, icon: Icon, url }) => (
+              <a key={name} href={url} target="_blank" rel="noopener noreferrer" aria-label={name}
                 className="flex h-11 w-11 items-center justify-center rounded-2xl border border-black/5 bg-white text-[#1F2937] hover:text-[#FF6B2C] hover:border-[#FF6B2C]/30 transition-colors">
                 <Icon className="h-5 w-5" />
               </a>
             ))}
-            <a href="#" aria-label="TikTok"
+            <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" aria-label="TikTok"
               className="flex h-11 w-11 items-center justify-center rounded-2xl border border-black/5 bg-white text-[#1F2937] hover:text-[#FF6B2C] hover:border-[#FF6B2C]/30 transition-colors text-xs font-bold">
               TT
             </a>
@@ -290,54 +290,6 @@ function Waitlist() {
   );
 }
 
-function Footer() {
-  const cols = [
-    { title: "Company", links: ["About Us", "Our Mission", "Blog (Coming Soon)"] },
-    { title: "Support", links: ["Help Center (Coming Soon)", "Safety Center (Coming Soon)", "Contact"] },
-    { title: "Legal", links: ["Terms & Conditions (Coming Soon)", "Privacy Policy (Coming Soon)"] },
-    { title: "For Helpers", links: ["Register Interest", "FAQs"] },
-  ];
-  return (
-    <footer className="bg-[#F9FAFB] border-t border-black/5">
-      <div className="mx-auto max-w-6xl px-5 py-14">
-        <div className="grid gap-10 md:grid-cols-5">
-          <div className="md:col-span-2">
-            <Logo className="text-3xl" />
-            <p className="mt-3 text-sm text-[#4B5563] max-w-xs">Qareeb — Help is Always Near.</p>
-            <div className="mt-5 flex items-center gap-2">
-              {[Instagram, Facebook, Linkedin, Youtube].map((Icon, i) => (
-                <a key={i} href="#" aria-label="Social"
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-black/5 bg-white text-[#1F2937] hover:text-[#FF6B2C] transition-colors">
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-              <a href="#" aria-label="TikTok"
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-black/5 bg-white text-[#1F2937] hover:text-[#FF6B2C] text-[11px] font-bold">
-                TT
-              </a>
-            </div>
-          </div>
-          {cols.map((c) => (
-            <div key={c.title}>
-              <h4 className="text-sm font-semibold text-[#1F2937]">{c.title}</h4>
-              <ul className="mt-3 space-y-2">
-                {c.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-sm text-[#6B7280] hover:text-[#FF6B2C] transition-colors">{l}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-black/5 pt-6">
-          <p className="text-xs text-[#6B7280]">© 2024 Qareeb. All rights reserved.</p>
-          <p className="text-xs text-[#6B7280] italic">Building trust, one connection at a time.</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
 
 function Landing() {
   return (
