@@ -3,8 +3,9 @@ import { useState } from "react";
 import {
   Wrench, Truck, Sparkles, GraduationCap, HeartHandshake, Grid3x3,
   ShieldCheck, Star, UserRound, Siren, Clock, Wallet, Lock,
-  Instagram, Facebook, Linkedin, Youtube, ChevronDown, Search, Users, MessageCircle, CheckCircle2,
+  ChevronDown, Search, Users, MessageCircle, CheckCircle2,
 } from "lucide-react";
+import { BrandButton, Footer, Nav, SOCIAL_LINKS, TIKTOK_URL } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -18,46 +19,6 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const Logo = ({ className = "" }: { className?: string }) => (
-  <span
-    className={`font-extrabold tracking-tight lowercase ${className}`}
-    style={{ color: "#00C4B6", fontFamily: '"Google Sans", "Poppins", sans-serif', letterSpacing: "-0.02em" }}
-  >
-    qareeb
-  </span>
-);
-
-const BrandButton = ({
-  children, href = "#waitlist", variant = "solid", className = "",
-}: { children: React.ReactNode; href?: string; variant?: "solid" | "outline"; className?: string }) => {
-  const base = "inline-flex items-center justify-center rounded-2xl px-6 py-3 text-sm sm:text-base font-semibold transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.98]";
-  const styles =
-    variant === "solid"
-      ? "text-white hover:brightness-105"
-      : "border-2 hover:bg-[#FFF3EC]";
-  const inline: React.CSSProperties =
-    variant === "solid"
-      ? { backgroundColor: "#FF6B2C" }
-      : { borderColor: "#FF6B2C", color: "#FF6B2C", backgroundColor: "#fff" };
-  return (
-    <a href={href} className={`${base} ${styles} ${className}`} style={inline}>
-      {children}
-    </a>
-  );
-};
-
-function Nav() {
-  return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur bg-white/80 border-b border-black/5">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
-        <a href="#top" className="flex items-center gap-2">
-          <Logo className="text-2xl sm:text-3xl" />
-        </a>
-        <BrandButton href="#waitlist" className="px-4 py-2 text-sm">Join Waitlist</BrandButton>
-      </div>
-    </header>
-  );
-}
 
 function Hero() {
   return (
