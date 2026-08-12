@@ -8,8 +8,8 @@ import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
  */
 
 export const SOCIAL_LINKS = [
-  { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/qaree_bofficial?utm_source=qr&igsh=MXczbXhkN21sYjVyag==" },
-  { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/share/p/18jWz1oC6g/" },
+  { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/qaree_bofficial/" },
+  { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/share/18hR4uZ9hJ/" },
   { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/company/qareebnow.com/" },
   { name: "YouTube", icon: Youtube, url: "https://youtube.com/@qareebofficial-l3l?si=ASzCqLZQrrRGTUep" },
 ] as const;
