@@ -71,7 +71,7 @@ export function Nav({ homeHref = "#top" }: { homeHref?: string }) {
 type FooterLink = { label: string; to?: string; href?: string };
 
 const footerCols: { title: string; links: FooterLink[] }[] = [
-  { title: "Company", links: [{ label: "About Us" }, { label: "Our Mission" }, { label: "Blog (Coming Soon)" }] },
+  { title: "Company", links: [{ label: "About Us" }, { label: "All Categories", to: "/categories" }, { label: "Blog (Coming Soon)" }] },
   { title: "Support", links: [{ label: "Help Center (Coming Soon)" }, { label: "Safety Center (Coming Soon)" }, { label: "Contact" }] },
   { title: "Legal", links: [{ label: "Terms & Conditions", to: "/terms" }, { label: "Privacy Policy", to: "/privacy" }] },
   { title: "For Helpers", links: [{ label: "Register Interest" }, { label: "FAQs" }] },
