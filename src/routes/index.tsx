@@ -179,24 +179,28 @@ function Trust() {
   return (
     <section id="trust" className="py-20 sm:py-24 bg-[#F9FAFB]">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHeader
-          eyebrow="Safety & Vision"
-          title="Built on Trust"
-          subtitle="We're designing Qareeb with safety and transparency at the core — because trust matters."
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow="Safety & Vision"
+            title="Built on Trust"
+            subtitle="We're designing Qareeb with safety and transparency at the core — because trust matters."
+          />
+        </Reveal>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((f) => (
-            <div key={f.title} className="rounded-2xl bg-white p-6 border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)]">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl"
-                style={{ backgroundColor: "rgba(0,196,182,0.1)", color: "#00C4B6" }}>
-                <f.icon className="h-6 w-6" />
+          {features.map((f, i) => (
+            <Reveal key={f.title} delay={i * 80}>
+              <div className="h-full rounded-2xl bg-white p-6 border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl"
+                  style={{ backgroundColor: "rgba(0,196,182,0.1)", color: "#00C4B6" }}>
+                  <f.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 font-semibold text-[#1F2937]">{f.title}</h3>
+                <span className="mt-3 inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium"
+                  style={{ backgroundColor: "rgba(0,196,182,0.1)", color: "#00A99C" }}>
+                  Coming Soon
+                </span>
               </div>
-              <h3 className="mt-4 font-semibold text-[#1F2937]">{f.title}</h3>
-              <span className="mt-3 inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium"
-                style={{ backgroundColor: "rgba(0,196,182,0.1)", color: "#00A99C" }}>
-                Coming Soon
-              </span>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -207,15 +211,17 @@ function Trust() {
 function About() {
   return (
     <section id="about" className="py-20 sm:py-24">
-      <div className="mx-auto max-w-3xl px-5 text-center">
-        <SectionHeader eyebrow="About us" title="A neighborhood, reimagined." />
-        <p className="text-lg leading-relaxed text-[#4B5563]">
-          Qareeb was born from a simple idea: help should always be close by. We are building a
-          trusted community where every connection is verified, every service is rated, and every
-          person is treated with respect. Whether you need a task done or want to offer your
-          skills, we're here to make it safe, simple, and human — launching soon.
-        </p>
-      </div>
+      <Reveal>
+        <div className="mx-auto max-w-3xl px-5 text-center">
+          <SectionHeader eyebrow="About us" title="A neighborhood, reimagined." />
+          <p className="text-lg leading-relaxed text-[#4B5563]">
+            Qareeb was born from a simple idea: help should always be close by. We are building a
+            trusted community where every connection is verified, every service is rated, and every
+            person is treated with respect. Whether you need a task done or want to offer your
+            skills, we're here to make it safe, simple, and human — launching soon.
+          </p>
+        </div>
+      </Reveal>
     </section>
   );
 }
@@ -229,21 +235,25 @@ function ForHelpers() {
   return (
     <section id="helpers" className="py-20 sm:py-24 bg-[#F9FAFB]">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHeader
-          eyebrow="For helpers"
-          title="Looking to Earn?"
-          subtitle="Qareeb will connect skilled professionals with people who need their help. Join us early."
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow="For helpers"
+            title="Looking to Earn?"
+            subtitle="Qareeb will connect skilled professionals with people who need their help. Join us early."
+          />
+        </Reveal>
         <div className="grid gap-5 md:grid-cols-3">
-          {benefits.map((b) => (
-            <div key={b.title} className="rounded-2xl bg-white p-6 border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)]">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl"
-                style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
-                <b.icon className="h-6 w-6" />
+          {benefits.map((b, i) => (
+            <Reveal key={b.title} delay={i * 80}>
+              <div className="h-full rounded-2xl bg-white p-6 border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl"
+                  style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
+                  <b.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 font-semibold text-[#1F2937]">{b.title}</h3>
+                <p className="mt-1.5 text-sm text-[#4B5563] leading-relaxed">{b.desc}</p>
               </div>
-              <h3 className="mt-4 font-semibold text-[#1F2937]">{b.title}</h3>
-              <p className="mt-1.5 text-sm text-[#4B5563] leading-relaxed">{b.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
         <div className="mt-10 text-center">
