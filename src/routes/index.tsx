@@ -82,23 +82,27 @@ function HowItWorks() {
   return (
     <section id="how" className="py-20 sm:py-24 bg-[#F9FAFB]">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHeader
-          eyebrow="How it works"
-          title="How It Will Work"
-          subtitle="We're building a simple, safe way to connect people who need help with verified helpers nearby."
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow="How it works"
+            title="How It Will Work"
+            subtitle="We're building a simple, safe way to connect people who need help with verified helpers nearby."
+          />
+        </Reveal>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <div key={s.title} className="relative rounded-2xl bg-white p-6 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)] border border-black/5 hover:-translate-y-1 transition-transform">
-              <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
-                  <s.icon className="h-6 w-6" />
+            <Reveal key={s.title} delay={i * 80}>
+              <div className="relative h-full rounded-2xl bg-white p-6 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)] border border-black/5 hover:-translate-y-1 transition-transform">
+                <div className="flex items-center justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
+                    <s.icon className="h-6 w-6" />
+                  </div>
+                  <span className="text-3xl font-extrabold text-[#F3F4F6]">0{i + 1}</span>
                 </div>
-                <span className="text-3xl font-extrabold text-[#F3F4F6]">0{i + 1}</span>
+                <h3 className="mt-4 text-lg font-semibold text-[#1F2937]">{s.title}</h3>
+                <p className="mt-1.5 text-sm text-[#4B5563] leading-relaxed">{s.desc}</p>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-[#1F2937]">{s.title}</h3>
-              <p className="mt-1.5 text-sm text-[#4B5563] leading-relaxed">{s.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
