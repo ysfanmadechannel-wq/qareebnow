@@ -107,32 +107,57 @@ function HowItWorks() {
 
 function Services() {
   const services = [
-    { icon: Wrench, title: "Home Services" },
-    { icon: Truck, title: "Moving & Delivery" },
-    { icon: Sparkles, title: "Cleaning" },
-    { icon: GraduationCap, title: "Tutoring & Study Help" },
-    { icon: HeartHandshake, title: "Women Services" },
-    { icon: Grid3x3, title: "More Categories" },
+    { icon: Sparkles, title: "Cleaning Services", price: "PKR 600–2,500/job" },
+    { icon: Wrench, title: "Plumbing", price: "PKR 1,000–3,500" },
+    { icon: Truck, title: "Shifting / Moving Help", price: "PKR 1,500–5,000/job" },
+    { icon: GraduationCap, title: "Tutoring", price: "PKR 500–1,500" },
+    { icon: HeartHandshake, title: "Elder Care", price: "PKR 1,200–3,500/shift" },
   ];
+  const total = CATEGORY_GROUPS.reduce((n, g) => n + g.items.length, 0);
   return (
     <section id="services" className="py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHeader
-          eyebrow="Services"
-          title="Services We'll Offer"
-          subtitle="From home repairs to tutoring — we're building a platform for all your everyday needs."
-        />
-        <div className="grid gap-5 grid-cols-2 md:grid-cols-3">
-          {services.map((s) => (
-            <div key={s.title} className="group rounded-2xl border border-black/5 bg-white p-6 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] hover:border-[#FF6B2C]/30 hover:shadow-[0_8px_28px_-10px_rgba(255,107,44,0.25)] transition-all">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl transition-colors"
-                style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
-                <s.icon className="h-6 w-6" strokeWidth={1.75} />
+        <Reveal>
+          <SectionHeader
+            eyebrow="Services"
+            title="Services We'll Offer"
+            subtitle="From home repairs to tutoring — we're building a platform for all your everyday needs."
+          />
+        </Reveal>
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          {services.map((s, i) => (
+            <Reveal key={s.title} delay={i * 70}>
+              <div className="h-full rounded-2xl border border-black/5 bg-white p-6 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] hover:border-[#FF6B2C]/30 hover:shadow-[0_8px_28px_-10px_rgba(255,107,44,0.25)] transition-all">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl transition-colors"
+                  style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
+                  <s.icon className="h-6 w-6" strokeWidth={1.75} />
+                </div>
+                <h3 className="mt-4 font-semibold text-[#1F2937]">{s.title}</h3>
+                <span className="mt-2 inline-flex items-center rounded-full px-2.5 py-1 text-[12px] font-semibold"
+                  style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>{s.price}</span>
+                <p className="mt-2 text-xs text-[#6B7280]">Coming soon</p>
               </div>
-              <h3 className="mt-4 font-semibold text-[#1F2937]">{s.title}</h3>
-              <p className="mt-1 text-xs text-[#6B7280]">Coming soon</p>
-            </div>
+            </Reveal>
           ))}
+          <Reveal delay={350}>
+            <Link
+              to="/categories"
+              className="group flex h-full flex-col justify-between rounded-2xl border-2 border-dashed p-6 transition-all hover:-translate-y-1 hover:shadow-[0_8px_28px_-10px_rgba(255,107,44,0.35)]"
+              style={{ borderColor: "#FF6B2C", backgroundColor: "#FFF7F2" }}
+            >
+              <div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl text-white" style={{ backgroundColor: "#FF6B2C" }}>
+                  <Grid3x3 className="h-6 w-6" strokeWidth={1.75} />
+                </div>
+                <h3 className="mt-4 font-semibold text-[#1F2937]">More Categories</h3>
+                <p className="mt-1 text-xs text-[#6B7280]">{total} services with indicative rates</p>
+              </div>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#FF6B2C" }}>
+                View all categories
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+          </Reveal>
         </div>
       </div>
     </section>
