@@ -5,7 +5,9 @@ import {
   ShieldCheck, Star, UserRound, Siren, Clock, Wallet, Lock,
   ChevronDown, Search, Users, MessageCircle, CheckCircle2,
 } from "lucide-react";
-import { BrandButton, Footer, Nav, SOCIAL_LINKS, TIKTOK_URL } from "@/components/site-chrome";
+import { Link } from "@tanstack/react-router";
+import { BrandButton, Footer, Logo, Nav, SOCIAL_LINKS, TIKTOK_URL } from "@/components/site-chrome";
+import { Reveal } from "@/components/reveal";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -34,8 +36,14 @@ function Hero() {
           <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#00C4B6" }} />
           Launching soon
         </span>
-        <h1 className="mt-5 text-4xl sm:text-6xl font-extrabold tracking-tight text-[#1F2937]">
-          Help is Always Near.
+        <div className="mt-8 flex flex-col items-center">
+          <Logo className="h-24 sm:h-32" />
+          <p className="mt-3 text-sm sm:text-base font-medium tracking-[0.18em] uppercase" style={{ color: "#00C4B6" }}>
+            Help is Always Near
+          </p>
+        </div>
+        <h1 className="mx-auto mt-8 max-w-3xl text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1F2937] text-balance break-words">
+          Pakistan's Trusted On-Demand Service Marketplace
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-[#4B5563] leading-relaxed">
           Qareeb is building a trusted platform to connect you with verified local helpers —
