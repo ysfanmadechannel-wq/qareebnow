@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+import qareebLogo from "@/assets/qareeb-logo.jpg.asset.json";
 
 /**
  * Shared Qareeb site chrome: logo, buttons, header nav, social links, footer.
@@ -16,13 +17,15 @@ export const SOCIAL_LINKS = [
 
 export const TIKTOK_URL = "https://www.tiktok.com/@qaree_bofficial?_r=1&_t=ZS-97uj5cvZDtM";
 
-export const Logo = ({ className = "" }: { className?: string }) => (
-  <span
-    className={`font-extrabold tracking-tight lowercase ${className}`}
-    style={{ color: "#00C4B6", fontFamily: '"Google Sans", "Poppins", sans-serif', letterSpacing: "-0.02em" }}
-  >
-    qareeb
-  </span>
+/** Official Qareeb logo (CDN asset). Pass a height class, e.g. "h-12". */
+export const Logo = ({ className = "h-10" }: { className?: string }) => (
+  <img
+    src={qareebLogo.url}
+    alt="Qareeb"
+    className={`w-auto object-contain ${className}`}
+    loading="eager"
+    decoding="async"
+  />
 );
 
 export const BrandButton = ({
