@@ -3,9 +3,12 @@ import { useState } from "react";
 import {
   Wrench, Truck, Sparkles, GraduationCap, HeartHandshake, Grid3x3,
   ShieldCheck, Star, UserRound, Siren, Clock, Wallet, Lock,
-  ChevronDown, Search, Users, MessageCircle, CheckCircle2,
+  ChevronDown, Search, Users, MessageCircle, CheckCircle2, ArrowRight,
 } from "lucide-react";
-import { BrandButton, Footer, Nav, SOCIAL_LINKS, TIKTOK_URL } from "@/components/site-chrome";
+import { Link } from "@tanstack/react-router";
+import { BrandButton, Footer, Logo, Nav, SOCIAL_LINKS, TIKTOK_URL } from "@/components/site-chrome";
+import { Reveal } from "@/components/reveal";
+import { CATEGORY_GROUPS } from "@/data/categories";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -34,8 +37,14 @@ function Hero() {
           <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#00C4B6" }} />
           Launching soon
         </span>
-        <h1 className="mt-5 text-4xl sm:text-6xl font-extrabold tracking-tight text-[#1F2937]">
-          Help is Always Near.
+        <div className="mt-8 flex flex-col items-center">
+          <Logo className="h-24 sm:h-32" />
+          <p className="mt-3 text-sm sm:text-base font-medium tracking-[0.18em] uppercase" style={{ color: "#00C4B6" }}>
+            Help is Always Near
+          </p>
+        </div>
+        <h1 className="mx-auto mt-8 max-w-3xl text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1F2937] text-balance break-words">
+          Pakistan's Trusted On-Demand Service Marketplace
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-[#4B5563] leading-relaxed">
           Qareeb is building a trusted platform to connect you with verified local helpers —
@@ -73,23 +82,27 @@ function HowItWorks() {
   return (
     <section id="how" className="py-20 sm:py-24 bg-[#F9FAFB]">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHeader
-          eyebrow="How it works"
-          title="How It Will Work"
-          subtitle="We're building a simple, safe way to connect people who need help with verified helpers nearby."
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow="How it works"
+            title="How It Will Work"
+            subtitle="We're building a simple, safe way to connect people who need help with verified helpers nearby."
+          />
+        </Reveal>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <div key={s.title} className="relative rounded-2xl bg-white p-6 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)] border border-black/5 hover:-translate-y-1 transition-transform">
-              <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
-                  <s.icon className="h-6 w-6" />
+            <Reveal key={s.title} delay={i * 80}>
+              <div className="relative h-full rounded-2xl bg-white p-6 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)] border border-black/5 hover:-translate-y-1 transition-transform">
+                <div className="flex items-center justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
+                    <s.icon className="h-6 w-6" />
+                  </div>
+                  <span className="text-3xl font-extrabold text-[#F3F4F6]">0{i + 1}</span>
                 </div>
-                <span className="text-3xl font-extrabold text-[#F3F4F6]">0{i + 1}</span>
+                <h3 className="mt-4 text-lg font-semibold text-[#1F2937]">{s.title}</h3>
+                <p className="mt-1.5 text-sm text-[#4B5563] leading-relaxed">{s.desc}</p>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-[#1F2937]">{s.title}</h3>
-              <p className="mt-1.5 text-sm text-[#4B5563] leading-relaxed">{s.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -99,32 +112,57 @@ function HowItWorks() {
 
 function Services() {
   const services = [
-    { icon: Wrench, title: "Home Services" },
-    { icon: Truck, title: "Moving & Delivery" },
-    { icon: Sparkles, title: "Cleaning" },
-    { icon: GraduationCap, title: "Tutoring & Study Help" },
-    { icon: HeartHandshake, title: "Women Services" },
-    { icon: Grid3x3, title: "More Categories" },
+    { icon: Sparkles, title: "Cleaning Services", price: "PKR 600–2,500/job" },
+    { icon: Wrench, title: "Plumbing", price: "PKR 1,000–3,500" },
+    { icon: Truck, title: "Shifting / Moving Help", price: "PKR 1,500–5,000/job" },
+    { icon: GraduationCap, title: "Tutoring", price: "PKR 500–1,500" },
+    { icon: HeartHandshake, title: "Elder Care", price: "PKR 1,200–3,500/shift" },
   ];
+  const total = CATEGORY_GROUPS.reduce((n, g) => n + g.items.length, 0);
   return (
     <section id="services" className="py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHeader
-          eyebrow="Services"
-          title="Services We'll Offer"
-          subtitle="From home repairs to tutoring — we're building a platform for all your everyday needs."
-        />
-        <div className="grid gap-5 grid-cols-2 md:grid-cols-3">
-          {services.map((s) => (
-            <div key={s.title} className="group rounded-2xl border border-black/5 bg-white p-6 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] hover:border-[#FF6B2C]/30 hover:shadow-[0_8px_28px_-10px_rgba(255,107,44,0.25)] transition-all">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl transition-colors"
-                style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
-                <s.icon className="h-6 w-6" strokeWidth={1.75} />
+        <Reveal>
+          <SectionHeader
+            eyebrow="Services"
+            title="Services We'll Offer"
+            subtitle="From home repairs to tutoring — we're building a platform for all your everyday needs."
+          />
+        </Reveal>
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          {services.map((s, i) => (
+            <Reveal key={s.title} delay={i * 70}>
+              <div className="h-full rounded-2xl border border-black/5 bg-white p-6 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] hover:border-[#FF6B2C]/30 hover:shadow-[0_8px_28px_-10px_rgba(255,107,44,0.25)] transition-all">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl transition-colors"
+                  style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
+                  <s.icon className="h-6 w-6" strokeWidth={1.75} />
+                </div>
+                <h3 className="mt-4 font-semibold text-[#1F2937]">{s.title}</h3>
+                <span className="mt-2 inline-flex items-center rounded-full px-2.5 py-1 text-[12px] font-semibold"
+                  style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>{s.price}</span>
+                <p className="mt-2 text-xs text-[#6B7280]">Coming soon</p>
               </div>
-              <h3 className="mt-4 font-semibold text-[#1F2937]">{s.title}</h3>
-              <p className="mt-1 text-xs text-[#6B7280]">Coming soon</p>
-            </div>
+            </Reveal>
           ))}
+          <Reveal delay={350}>
+            <Link
+              to="/categories"
+              className="group flex h-full flex-col justify-between rounded-2xl border-2 border-dashed p-6 transition-all hover:-translate-y-1 hover:shadow-[0_8px_28px_-10px_rgba(255,107,44,0.35)]"
+              style={{ borderColor: "#FF6B2C", backgroundColor: "#FFF7F2" }}
+            >
+              <div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl text-white" style={{ backgroundColor: "#FF6B2C" }}>
+                  <Grid3x3 className="h-6 w-6" strokeWidth={1.75} />
+                </div>
+                <h3 className="mt-4 font-semibold text-[#1F2937]">More Categories</h3>
+                <p className="mt-1 text-xs text-[#6B7280]">{total} services with indicative rates</p>
+              </div>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#FF6B2C" }}>
+                View all categories
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -141,24 +179,28 @@ function Trust() {
   return (
     <section id="trust" className="py-20 sm:py-24 bg-[#F9FAFB]">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHeader
-          eyebrow="Safety & Vision"
-          title="Built on Trust"
-          subtitle="We're designing Qareeb with safety and transparency at the core — because trust matters."
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow="Safety & Vision"
+            title="Built on Trust"
+            subtitle="We're designing Qareeb with safety and transparency at the core — because trust matters."
+          />
+        </Reveal>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((f) => (
-            <div key={f.title} className="rounded-2xl bg-white p-6 border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)]">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl"
-                style={{ backgroundColor: "rgba(0,196,182,0.1)", color: "#00C4B6" }}>
-                <f.icon className="h-6 w-6" />
+          {features.map((f, i) => (
+            <Reveal key={f.title} delay={i * 80}>
+              <div className="h-full rounded-2xl bg-white p-6 border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl"
+                  style={{ backgroundColor: "rgba(0,196,182,0.1)", color: "#00C4B6" }}>
+                  <f.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 font-semibold text-[#1F2937]">{f.title}</h3>
+                <span className="mt-3 inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium"
+                  style={{ backgroundColor: "rgba(0,196,182,0.1)", color: "#00A99C" }}>
+                  Coming Soon
+                </span>
               </div>
-              <h3 className="mt-4 font-semibold text-[#1F2937]">{f.title}</h3>
-              <span className="mt-3 inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium"
-                style={{ backgroundColor: "rgba(0,196,182,0.1)", color: "#00A99C" }}>
-                Coming Soon
-              </span>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -169,15 +211,17 @@ function Trust() {
 function About() {
   return (
     <section id="about" className="py-20 sm:py-24">
-      <div className="mx-auto max-w-3xl px-5 text-center">
-        <SectionHeader eyebrow="About us" title="A neighborhood, reimagined." />
-        <p className="text-lg leading-relaxed text-[#4B5563]">
-          Qareeb was born from a simple idea: help should always be close by. We are building a
-          trusted community where every connection is verified, every service is rated, and every
-          person is treated with respect. Whether you need a task done or want to offer your
-          skills, we're here to make it safe, simple, and human — launching soon.
-        </p>
-      </div>
+      <Reveal>
+        <div className="mx-auto max-w-3xl px-5 text-center">
+          <SectionHeader eyebrow="About us" title="A neighborhood, reimagined." />
+          <p className="text-lg leading-relaxed text-[#4B5563]">
+            Qareeb was born from a simple idea: help should always be close by. We are building a
+            trusted community where every connection is verified, every service is rated, and every
+            person is treated with respect. Whether you need a task done or want to offer your
+            skills, we're here to make it safe, simple, and human — launching soon.
+          </p>
+        </div>
+      </Reveal>
     </section>
   );
 }
@@ -191,21 +235,25 @@ function ForHelpers() {
   return (
     <section id="helpers" className="py-20 sm:py-24 bg-[#F9FAFB]">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHeader
-          eyebrow="For helpers"
-          title="Looking to Earn?"
-          subtitle="Qareeb will connect skilled professionals with people who need their help. Join us early."
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow="For helpers"
+            title="Looking to Earn?"
+            subtitle="Qareeb will connect skilled professionals with people who need their help. Join us early."
+          />
+        </Reveal>
         <div className="grid gap-5 md:grid-cols-3">
-          {benefits.map((b) => (
-            <div key={b.title} className="rounded-2xl bg-white p-6 border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)]">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl"
-                style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
-                <b.icon className="h-6 w-6" />
+          {benefits.map((b, i) => (
+            <Reveal key={b.title} delay={i * 80}>
+              <div className="h-full rounded-2xl bg-white p-6 border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl"
+                  style={{ backgroundColor: "#FFF3EC", color: "#FF6B2C" }}>
+                  <b.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 font-semibold text-[#1F2937]">{b.title}</h3>
+                <p className="mt-1.5 text-sm text-[#4B5563] leading-relaxed">{b.desc}</p>
               </div>
-              <h3 className="mt-4 font-semibold text-[#1F2937]">{b.title}</h3>
-              <p className="mt-1.5 text-sm text-[#4B5563] leading-relaxed">{b.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
         <div className="mt-10 text-center">
