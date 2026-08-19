@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
-import qareebLogo from "@/assets/qareeb-logo.jpg.asset.json";
+import qareebLogo from "@/assets/qareeb-logo.png.asset.json";
 
 /**
  * Shared Qareeb site chrome: logo, buttons, header nav, social links, footer.
@@ -53,11 +53,11 @@ export function Nav({ homeHref = "#top" }: { homeHref?: string }) {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
         {homeHref === "#top" ? (
           <a href="#top" className="flex items-center gap-2">
-            <Logo className="text-2xl sm:text-3xl" />
+            <Logo className="h-10 sm:h-12" />
           </a>
         ) : (
           <Link to="/" className="flex items-center gap-2">
-            <Logo className="text-2xl sm:text-3xl" />
+            <Logo className="h-10 sm:h-12" />
           </Link>
         )}
         <BrandButton href={homeHref === "#top" ? "#waitlist" : "/#waitlist"} className="px-4 py-2 text-sm">
@@ -83,7 +83,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-14">
         <div className="grid gap-10 md:grid-cols-5">
           <div className="md:col-span-2">
-            <Logo className="text-3xl" />
+            <Logo className="h-14" />
             <p className="mt-3 text-sm text-[#4B5563] max-w-xs">Qareeb — Help is Always Near.</p>
             <div className="mt-5 flex items-center gap-2">
               {SOCIAL_LINKS.map(({ name, icon: Icon, url }) => (
@@ -116,7 +116,7 @@ export function Footer() {
           ))}
         </div>
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-black/5 pt-6">
-          <p className="text-xs text-[#6B7280]">© 2024 Qareeb. All rights reserved.</p>
+          <p className="text-xs text-[#6B7280]">© 2026 Qareeb. All rights reserved.</p>
           <p className="text-xs text-[#6B7280] italic">Building trust, one connection at a time.</p>
         </div>
       </div>
