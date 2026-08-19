@@ -3,11 +3,12 @@ import { useState } from "react";
 import {
   Wrench, Truck, Sparkles, GraduationCap, HeartHandshake, Grid3x3,
   ShieldCheck, Star, UserRound, Siren, Clock, Wallet, Lock,
-  ChevronDown, Search, Users, MessageCircle, CheckCircle2,
+  ChevronDown, Search, Users, MessageCircle, CheckCircle2, ArrowRight,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { BrandButton, Footer, Logo, Nav, SOCIAL_LINKS, TIKTOK_URL } from "@/components/site-chrome";
 import { Reveal } from "@/components/reveal";
+import { CATEGORY_GROUPS } from "@/data/categories";
 
 export const Route = createFileRoute("/")({
   component: Landing,
