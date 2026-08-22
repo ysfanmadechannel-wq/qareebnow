@@ -338,7 +338,7 @@ function Waitlist() {
               TT
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
