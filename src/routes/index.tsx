@@ -277,21 +277,25 @@ function FAQ() {
   return (
     <section id="faq" className="py-20 sm:py-24">
       <div className="mx-auto max-w-3xl px-5">
-        <SectionHeader eyebrow="FAQ" title="Frequently Asked Questions" />
+        <Reveal>
+          <SectionHeader eyebrow="FAQ" title="Frequently Asked Questions" />
+        </Reveal>
         <div className="space-y-3">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} className="rounded-2xl border border-black/5 bg-white overflow-hidden">
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-                >
-                  <span className="font-semibold text-[#1F2937]">{f.q}</span>
-                  <ChevronDown className={`h-5 w-5 shrink-0 text-[#6B7280] transition-transform ${isOpen ? "rotate-180" : ""}`} />
-                </button>
-                {isOpen && <div className="px-5 pb-5 text-sm text-[#4B5563] leading-relaxed">{f.a}</div>}
-              </div>
+              <Reveal key={f.q} delay={Math.min(i, 5) * 70}>
+                <div className="rounded-2xl border border-black/5 bg-white overflow-hidden">
+                  <button
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                  >
+                    <span className="font-semibold text-[#1F2937]">{f.q}</span>
+                    <ChevronDown className={`h-5 w-5 shrink-0 text-[#6B7280] transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {isOpen && <div className="px-5 pb-5 text-sm text-[#4B5563] leading-relaxed">{f.a}</div>}
+                </div>
+              </Reveal>
             );
           })}
         </div>
