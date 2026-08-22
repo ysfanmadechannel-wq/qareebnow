@@ -277,21 +277,25 @@ function FAQ() {
   return (
     <section id="faq" className="py-20 sm:py-24">
       <div className="mx-auto max-w-3xl px-5">
-        <SectionHeader eyebrow="FAQ" title="Frequently Asked Questions" />
+        <Reveal>
+          <SectionHeader eyebrow="FAQ" title="Frequently Asked Questions" />
+        </Reveal>
         <div className="space-y-3">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} className="rounded-2xl border border-black/5 bg-white overflow-hidden">
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-                >
-                  <span className="font-semibold text-[#1F2937]">{f.q}</span>
-                  <ChevronDown className={`h-5 w-5 shrink-0 text-[#6B7280] transition-transform ${isOpen ? "rotate-180" : ""}`} />
-                </button>
-                {isOpen && <div className="px-5 pb-5 text-sm text-[#4B5563] leading-relaxed">{f.a}</div>}
-              </div>
+              <Reveal key={f.q} delay={Math.min(i, 5) * 70}>
+                <div className="rounded-2xl border border-black/5 bg-white overflow-hidden">
+                  <button
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                  >
+                    <span className="font-semibold text-[#1F2937]">{f.q}</span>
+                    <ChevronDown className={`h-5 w-5 shrink-0 text-[#6B7280] transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {isOpen && <div className="px-5 pb-5 text-sm text-[#4B5563] leading-relaxed">{f.a}</div>}
+                </div>
+              </Reveal>
             );
           })}
         </div>
@@ -306,19 +310,21 @@ function Waitlist() {
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-70"
         style={{ background: "radial-gradient(circle at 50% 40%, #FFE7D6 0%, transparent 60%)" }} />
       <div className="relative mx-auto max-w-2xl px-5 text-center">
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1F2937]">
-          Be the First to Know.
-        </h2>
-        <p className="mt-3 text-[#4B5563]">Qareeb is launching soon. Join the waitlist and stay updated.</p>
-        <form onSubmit={(e) => e.preventDefault()} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input
-            type="email"
-            placeholder="you@example.com"
-            className="flex-1 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-[#FF6B2C] focus:ring-4 focus:ring-[#FF6B2C]/15"
-          />
-          <BrandButton href="#waitlist">Join Waitlist</BrandButton>
-        </form>
-        <div className="mt-10">
+        <Reveal>
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1F2937]">
+            Be the First to Know.
+          </h2>
+          <p className="mt-3 text-[#4B5563]">Qareeb is launching soon. Join the waitlist and stay updated.</p>
+          <form onSubmit={(e) => e.preventDefault()} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="you@example.com"
+              className="flex-1 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-[#FF6B2C] focus:ring-4 focus:ring-[#FF6B2C]/15"
+            />
+            <BrandButton href="#waitlist">Join Waitlist</BrandButton>
+          </form>
+        </Reveal>
+        <Reveal delay={120} className="mt-10">
           <p className="text-sm text-[#6B7280]">Follow us on social media</p>
           <div className="mt-4 flex items-center justify-center gap-3">
             {SOCIAL_LINKS.map(({ name, icon: Icon, url }) => (
@@ -332,7 +338,7 @@ function Waitlist() {
               TT
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
