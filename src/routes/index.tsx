@@ -310,19 +310,21 @@ function Waitlist() {
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-70"
         style={{ background: "radial-gradient(circle at 50% 40%, #FFE7D6 0%, transparent 60%)" }} />
       <div className="relative mx-auto max-w-2xl px-5 text-center">
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1F2937]">
-          Be the First to Know.
-        </h2>
-        <p className="mt-3 text-[#4B5563]">Qareeb is launching soon. Join the waitlist and stay updated.</p>
-        <form onSubmit={(e) => e.preventDefault()} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input
-            type="email"
-            placeholder="you@example.com"
-            className="flex-1 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-[#FF6B2C] focus:ring-4 focus:ring-[#FF6B2C]/15"
-          />
-          <BrandButton href="#waitlist">Join Waitlist</BrandButton>
-        </form>
-        <div className="mt-10">
+        <Reveal>
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1F2937]">
+            Be the First to Know.
+          </h2>
+          <p className="mt-3 text-[#4B5563]">Qareeb is launching soon. Join the waitlist and stay updated.</p>
+          <form onSubmit={(e) => e.preventDefault()} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="you@example.com"
+              className="flex-1 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-[#FF6B2C] focus:ring-4 focus:ring-[#FF6B2C]/15"
+            />
+            <BrandButton href="#waitlist">Join Waitlist</BrandButton>
+          </form>
+        </Reveal>
+        <Reveal delay={120} className="mt-10">
           <p className="text-sm text-[#6B7280]">Follow us on social media</p>
           <div className="mt-4 flex items-center justify-center gap-3">
             {SOCIAL_LINKS.map(({ name, icon: Icon, url }) => (
