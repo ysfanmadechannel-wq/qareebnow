@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
-import qareebLogo from "@/assets/qareeb-logo.png.asset.json";
+
 
 /**
  * Shared Qareeb site chrome: logo, buttons, header nav, social links, footer.
